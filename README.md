@@ -41,6 +41,7 @@ Screenshots:
 - **Tech Achievement 2**: Wrote several custom middleware
 - **Tech Achievement 3**: Created a form for users to make their own custom requests
 - **Tech Achievement 4**: When an status code is obtained on the home page, the list of awards auto updates
+- **Tech Achievement 5**: For security purposes, automatically redirect any requests over HTTP to be over HTTPS (try it out: http://a3-samgoldman.glitch.me)
 
 ## Design/Evaluation Achievements
 - **Design Achievement 1**: Used semantic HTML tags for major sections of the page (header, footer, main)
