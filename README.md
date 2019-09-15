@@ -20,7 +20,7 @@ https://a3-samgoldman.glitch.me
   6. express-sanitizer: used to sanitize comments submitted by users to prevent HTML injection
   7. isLoggedIn, isNotLoggedIn (custom): written to make user validation easier. isLoggedIn redirects to '/' if the user is not logged in and isNotLoggedIn redirects to '/home' if they are
   8. length checkers (custom, anonymous functions): written to check the length of the URL, headers, and (for POSTs) the body and if they are above the arbirary limits, send the appropriate error status codes.
-  9. error page servers (custom, anonymous function): written as final middleware to serve any error pages and award users appropriately.
+  9. error page server (custom, anonymous function): written as final middleware to serve any error pages and award users appropriately.
 
 Note: for the purposes of the requirement to have HTML showing only a user's data, the awards display only shows awards achieved by the logged in user. Additionally, the comments display only puts an 'X' button for removal on a user's own comments.
 
