@@ -34,6 +34,8 @@ Note: for the purposes of the requirement to have HTML showing only a user's dat
 - **Tech Achievement 1**: Used bcrypt to encrypt user passwords
 - **Tech Achievement 2**: Wrote several custom middleware
 - **Tech Achievement 3**: Created a form for users to make their own custom requests
+- **Tech Achievement 4**: When an status code is obtained on the home page, the list of awards auto updates
 
 ### Design/Evaluation Achievements
 - **Design Achievement 1**: Used semantic HTML tags for major sections of the page (header, footer, main)
+- **Design Achievement 2**: From a design perspective, the auto update of Tech Achievement 4 gives the user instantaneous feedback
