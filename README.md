@@ -1,74 +1,33 @@
-Assignment 3 - Persistence: Two-tier Web Application with Flat File Database, Express server, and CSS template
-===
+## HTTP Status Code Scavenger Hunt
 
-Due: September 16th, by 11:59 AM.
+https://a3-samgoldman.glitch.me
 
-This assignnment continues where we left off, extending it to use the most popular Node.js server framework (express), a flat file database suitable for small applications (lowdb), and a CSS application framework / template of your choice (Boostrap, Material Design, Semantic UI, Pure etc.)
+- The goal of this application is to teach users about a subset of HTTP status codes. They are supposed to use the site to induce 14 different status codes from the 2**, 4**, and 5** groups of errors. When they do, they are given an award for that status code.
+- Some challenges I faced:
+  - I tried to implement either 100 or 102 and ran into significant roadblocks doing so
+  - When I had someone test it out, it became very clear that I needed to protect again HTML injection with the comments
+  - I had some issues getting the form notifications when signing up, logging in, and changing passwords to work
+  - I found it difficult to use semantic HTML (divs were pretty essential in formatting)
+- I chose to use local authentication and lowdb for this project. I used these because they were the easiest. I wanted to focus my time on the other aspects of the project.
+- I used the picnic CSS framework. I first picked it because the name fit the theme I had in mind, and kept it because it seemed light and easy to use (and it did fit the theme I wanted).
+  - Changes I made include fixing margins on the home page, breaking large words in the comment boxes, aligning everything center (persoanl preference), and adjusting the margins around the X buttons for comments (followed the adjustment guide from the picnic documentation).
+- Middleware:
+  1. passport: provides local authentication strategy.
+  2. body-parser: automatically parses JSON.
+  3. compression: compresses responses at the cost of response time. Not necessary, but I wanted to try it out.
+  4. morgan: logs all requests and the response codes for them. Helped me track codes being sent.
+  5. express-rate-limit: used to rate-limit the home page to enable the 429 error code
+  6. express-sanitizer: used to sanitize comments submitted by users to prevent HTML injection
+  7. isLoggedIn, isNotLoggedIn (custom): written to make user validation easier. isLoggedIn redirects to '/' if the user is not logged in and isNotLoggedIn redirects to '/home' if they are
+  8. length checkers (custom, anonymous functions): written to check the length of the URL, headers, and (for POSTs) the body and if they are above the arbirary limits, send the appropriate error status codes.
+  9. error page servers (custom, anonymous function): written as final middleware to serve any error pages and award users appropriately.
 
-
-Baseline Requirements
----
-
-Your application is required to implement the following functionalities:
-
-- a `Server`, created using Express (no alternatives will be accepted for this assignment)
-- a `Results` functionality which shows the entire dataset residing in the server's memory
-- a `Form/Entry` functionality which allows users to add, modify, and delete data items (must be all three!) associated with their user name / account.
-- Use of at least five [Express middleware packages](https://expressjs.com/en/resources/middleware.html). Explore! 
-- Basic authentication using the [Passport middleware](http://www.passportjs.org) for Express (this counts as one of your five middleware packages). We encourage using the Local strategy, but OAuth (Open Authentication) can also be used for additional technical achievement. The course staff cannot help you with the various flavors of OAuth strategies. YOU MUST PROVIDE US WITH ACCOUNT CREDENTIALS TO LOGIN TO YOUR APPLICATION IF YOU USE OAUTH. The course staff cannot be expected to have credentials for any particular OAuth service.
-- Persistent data storage in between server sessions. [lowdb](https://github.com/typicode/lowdb) is a suitable database package for this assignment and will be discussed in class.
-- Use of a [CSS framework or template](https://github.com/troxler/awesome-css-frameworks). This should do the bulk of your styling/CSS for you and be appropriate to your application. For example, don't use [NES.css](https://nostalgic-css.github.io/NES.css/) (which is awesome!) unless you're creating a game or some type of retro 80s site.
-
-Your application is required to demonstrate the use of the following concepts:
-
-HTML:
-- HTML input tags and form fields of various flavors (`<textarea>`, `<input>`, checkboxes, radio buttons etc.)
-- HTML that can display all data *for a particular authenticated user*. Note that this is different from the last assignnment, which required the display of all data in memory on the server.
-
-Note that it might make sense to have two simple pages for this assignment, one that handles login / authentication, and one that contains the rest of your application. For this assignment, it is acceptable to simply create new user accounts upon login if none exist, however, you must alert your users to this fact. If you're not using OAuth 
-
-CSS:
-- CSS styling should primarily be provided by your chosen template/framework. Oftentimes a great deal of care has been put into designing CSS templates; don't override their stylesheets unless you are extremely confident in your graphic design capabilities. The idea is to use CSS templates that give you a professional looking design aesthetic without requiring you to be a graphic designer yourself.
-
-JavaScript:
-- At minimum, a small amount of front-end JavaScript to get / fetch data from the server. See the [previous assignment](https://github.com/cs4241-19a/a2-shortstack) for reference.
-
-Node.js:
-- A server using Express, at least five pieces of Express middleware, and a persistent database (a flat file using lowdb is great).
-
-Deliverables
----
-
-Do the following to complete this assignment:
-
-1. Implement your project with the above requirements. A good potential starting point is to use the "hello-express" project template inside of Glitch; this appears as an option when you hit the "New Project" button. Use the work you did in the last assignment as a reference to implement functionality, as well as the notes from class on 9/9 and 9/12.
-2. If you developed your project locally, deploy your project to Glitch, and fill in the appropriate fields in your package.json file.
-3. Test your project to make sure that when someone goes to your main page on Glitch, it displays correctly.
-4. Ensure that your project has the proper naming scheme `a3-yourname` so we can find it.
-5. Fork this repository and modify the README to the specifications below. You do not need to include any of your project files in this repo (we will see those on Glitch), you only need to update and commit the README file.
-6. Create and submit a Pull Request to the original repo. Name the pull request using the following template: `a3-gitname-firstname-lastname`.
-
-Sample Readme (delete the above when you're ready to submit, and modify the below so with your links and descriptions)
----
-
-## Your Web Application Title
-
-your glitch link e.g. http://a3-charlieroberts.glitch.me
-
-Include a very brief summary of your project here. Images are encouraged, along with concise, high-level text. Be sure to include:
-
-- the goal of the application
-- challenges you faced in realizing the application
-- what authentication strategy / database you chose to use and why (choosing one because it seemed the easiest to implement is perfectly acceptable)
-- what CSS framework you used and why.
-  - include any modifications to the CSS framework you made via custom CSS you authored.
-- the five Express middleware packages you used and a short (one sentence) summary of what each one does.
+Note: for the purposes of the requirement to have HTML showing only a user's data, the awards display only shows awards achieved by the logged in user. Additionally, the comments display only puts an 'X' button for removal on a user's own comments.
 
 ## Technical Achievements
-- **Tech Achievement 1**: I used OAuth authentication via the GitHub strategy
-- **Tech Achievement 2**: I used over ten Express middleware packages, enabling me to create a server that...
+- **Tech Achievement 1**: Used bcrypt to encrypt user passwords
+- **Tech Achievement 2**: Wrote several custom middleware
+- **Tech Achievement 3**: Created an form for users to make their own custom requests
 
 ### Design/Evaluation Achievements
-- **Design Achievement 1**: I tested my application using screen reading software, and found that...
-- **Design Achievement 2**: I followed best practices for accessibility, including providing alt attributes for images and using semantic HTML. There are no `<div>` or `<span>` elements in my document.
-- **Design Achievement 3**: We tested the application with n=X users, finding that...
+- **Design Achievement 1**: Used semantic HTML tags for major sections of the page (header, footer, main)
