@@ -22,12 +22,18 @@ https://a3-samgoldman.glitch.me
   8. length checkers (custom, anonymous functions): written to check the length of the URL, headers, and (for POSTs) the body and if they are above the arbirary limits, send the appropriate error status codes.
   9. error page server (custom, anonymous function): written as final middleware to serve any error pages and award users appropriately.
 
+
+Login: 
+- username=demo; password=password123
+- Or create your own account
+
+
 Note: for the purposes of the requirement to have HTML showing only a user's data, the awards display only shows awards achieved by the logged in user. Additionally, the comments display only puts an 'X' button for removal on a user's own comments.
 
 ## Technical Achievements
 - **Tech Achievement 1**: Used bcrypt to encrypt user passwords
 - **Tech Achievement 2**: Wrote several custom middleware
-- **Tech Achievement 3**: Created an form for users to make their own custom requests
+- **Tech Achievement 3**: Created a form for users to make their own custom requests
 
 ### Design/Evaluation Achievements
 - **Design Achievement 1**: Used semantic HTML tags for major sections of the page (header, footer, main)
