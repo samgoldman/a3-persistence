@@ -30,6 +30,12 @@ Login:
 
 Note: for the purposes of the requirement to have HTML showing only a user's data, the awards display only shows awards achieved by the logged in user. Additionally, the comments display only puts an 'X' button for removal on a user's own comments.
 
+Screenshots:
+![https://i.imgur.com/GbGMtwZ.png](https://i.imgur.com/GbGMtwZ.png)
+![https://i.imgur.com/x6ZRMkI.png](https://i.imgur.com/x6ZRMkI.png)
+![https://i.imgur.com/4QCGmeV.png](https://i.imgur.com/4QCGmeV.png)
+
+
 ## Technical Achievements
 - **Tech Achievement 1**: Used bcrypt to encrypt user passwords
 - **Tech Achievement 2**: Wrote several custom middleware
